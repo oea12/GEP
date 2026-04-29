@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+  <title id="title">GEP dorado</title>
+  <desc id="desc">Logotipo rediseñado de GEP en versión dorada.</desc>
+  <defs>
+    <linearGradient id="gold" x1="80" x2="560" y1="80" y2="560" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8b6321"/>
+      <stop offset=".18" stop-color="#d6ae58"/>
+      <stop offset=".45" stop-color="#fff0a6"/>
+      <stop offset=".72" stop-color="#c89536"/>
+      <stop offset="1" stop-color="#7a551b"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="640" rx="88" fill="#080808"/>
+  <rect x="56" y="56" width="528" height="528" rx="68" fill="url(#gold)"/>
+  <g fill="#080808">
+    <path d="M320 120 438 168v92c0 78-49 145-118 169-69-24-118-91-118-169v-92l118-48Zm0 44-78 32v62c0 54 31 102 78 124 47-22 78-70 78-124v-62l-78-32Z"/>
+    <path d="M414 223c-66 10-123 32-172 66 67-5 121-22 172-66Z"/>
+    <path d="M398 285c-51 6-94 22-132 48 52-2 94-15 132-48Z"/>
+    <path d="M381 342c-34 4-64 15-91 32 35 1 64-8 91-32Z"/>
+  </g>
+  <text x="320" y="508" text-anchor="middle" fill="#080808" font-family="Montserrat, Arial, sans-serif" font-size="150" font-weight="700" letter-spacing="12">GEP</text>
+</svg>
