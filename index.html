@@ -3,6 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+        <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="0">
         <meta name="description" content="GEP Gestoría: asesoría y gestión de trámites para negocios, construcción, protección civil y legal funcionamiento en México.">
         <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
@@ -320,6 +323,31 @@
         </footer>
         <script src="js/bootstrap.bundle.min.js"></script>
         <script src="js/aos.js"></script>
+        <script>
+      (function() {
+        const key = 'gep_refresh_count';
+        const limit = 5;
+        const url = new URL(window.location.href);
+
+        if (url.searchParams.has('fresh')) {
+          localStorage.setItem(key, '0');
+          url.searchParams.delete('fresh');
+          window.history.replaceState(null, '', url.pathname + (url.search ? url.search : '') + url.hash);
+          return;
+        }
+
+        const count = Number(localStorage.getItem(key) || '0') + 1;
+
+        if (count >= limit) {
+          localStorage.setItem(key, '0');
+          url.searchParams.set('fresh', Date.now().toString());
+          window.location.replace(url.toString());
+          return;
+        }
+
+        localStorage.setItem(key, String(count));
+      })();
+    </script>
         <script>
       AOS.init({
         duration: 800,
