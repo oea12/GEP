@@ -12,11 +12,16 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   exit;
 }
 
+if (!empty($_POST['website'] ?? '')) {
+  header('Location: index.html?status=ok#contacto');
+  exit;
+}
+
 $name = clean_field($_POST['Nombre'] ?? '');
 $email = filter_var($_POST['Correo'] ?? '', FILTER_VALIDATE_EMAIL);
 $message = trim($_POST['Mensaje'] ?? '');
 
-if ($name === '' || !$email) {
+if ($name === '' || !$email || $message === '') {
   header('Location: index.html?status=error#contacto');
   exit;
 }
@@ -36,6 +41,10 @@ $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
 $sent = mail($recipient, $subject, $body, $headers);
 $status = $sent ? 'ok' : 'error';
+
+if (!$sent) {
+  error_log('GEP contact form: mail() failed for ' . $recipient);
+}
 
 header("Location: index.html?status={$status}#contacto");
 exit;

@@ -258,8 +258,12 @@
                 Teléfono: <a class="link-light" href="tel:+525510625334">55 10 62 53 34</a> </address>
                         </div>
                         <div class="col-lg-5" data-aos="fade-left">
-                            <form action="contact.php" method="post" class="bg-light text-dark p-4 p-md-5 shadow">
-                                <p class="form-status alert alert-success" id="mensaje-enviado">Gracias. Su solicitud fue enviada correctamente.</p>
+                            <form action="contact.php" method="post" accept-charset="UTF-8" class="bg-light text-dark p-4 p-md-5 shadow">
+                                <p class="form-status alert alert-success" id="mensaje-enviado" aria-live="polite">Gracias. Su solicitud fue enviada correctamente.</p>
+                                <div class="d-none" aria-hidden="true">
+                                    <label for="website">Sitio web</label>
+                                    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                                </div>
                                 <div class="mb-3">
                                     <label for="nombre" class="form-label">Nombre</label>
                                     <input type="text" class="form-control form-control-lg" id="nombre" name="Nombre" required>
@@ -270,7 +274,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="mensaje" class="form-label">Mensaje</label>
-                                    <textarea class="form-control" id="mensaje" name="Mensaje" rows="5" placeholder="Cuéntenos qué trámite o proyecto necesita revisar."></textarea>
+                                    <textarea class="form-control" id="mensaje" name="Mensaje" rows="5" placeholder="Cuéntenos qué trámite o proyecto necesita revisar." required></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-gep btn-lg w-100">Enviar solicitud</button>
                             </form>
