@@ -1,6 +1,6 @@
 <?php
 // Cuenta que recibira las solicitudes enviadas desde el sitio.
-$recipient = 'holiveros@yahoo.com.mx';
+$recipient = 'holiverosa@yahoo.com.mx';
 $subject = 'Nueva solicitud desde el sitio web de GEP';
 
 function clean_field($value) {
@@ -9,11 +9,6 @@ function clean_field($value) {
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   header('Location: index.html#contacto');
-  exit;
-}
-
-if (!empty($_POST['website'] ?? '')) {
-  header('Location: index.html?status=ok#contacto');
   exit;
 }
 
@@ -31,15 +26,17 @@ $body .= "Nombre: {$name}\n";
 $body .= "Correo: {$email}\n";
 $body .= "Mensaje:\n{$message}\n";
 
-$host = preg_replace('/[^a-zA-Z0-9.-]/', '', $_SERVER['HTTP_HOST'] ?? 'gepgestoria.com');
+$host = preg_replace('/[^a-zA-Z0-9.-]/', '', $_SERVER['HTTP_HOST'] ?? 'gepmex.com.mx');
 $host = preg_replace('/^www\./', '', $host);
 $sender = "no-reply@{$host}";
 
 $headers = "From: GEP Web <{$sender}>\r\n";
 $headers .= "Reply-To: {$name} <{$email}>\r\n";
+$headers .= "Return-Path: {$sender}\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+$headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
 
-$sent = mail($recipient, $subject, $body, $headers);
+$sent = mail($recipient, $subject, $body, $headers, "-f {$sender}");
 $status = $sent ? 'ok' : 'error';
 
 if (!$sent) {
