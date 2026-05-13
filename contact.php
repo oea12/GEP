@@ -1,6 +1,6 @@
 <?php
 // Cuenta que recibira las solicitudes enviadas desde el sitio.
-$recipient = 'holiverosa@yahoo.com.mx';
+$recipient = 'oea1_2@hotmail.com';
 $subject = 'Nueva solicitud desde el sitio web de GEP';
 
 function clean_field($value) {
@@ -38,6 +38,17 @@ $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
 
 $sent = mail($recipient, $subject, $body, $headers, "-f {$sender}");
 $status = $sent ? 'ok' : 'error';
+$logLine = sprintf(
+  "[%s] status=%s recipient=%s sender=%s name=%s email=%s ip=%s\n",
+  date('c'),
+  $status,
+  $recipient,
+  $sender,
+  $name,
+  $email,
+  $_SERVER['REMOTE_ADDR'] ?? 'unknown'
+);
+file_put_contents(__DIR__ . '/contact-log.txt', $logLine, FILE_APPEND | LOCK_EX);
 
 if (!$sent) {
   error_log('GEP contact form: mail() failed for ' . $recipient);
