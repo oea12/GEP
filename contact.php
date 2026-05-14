@@ -28,7 +28,7 @@ $body .= "Mensaje:\n{$message}\n";
 
 $host = preg_replace('/[^a-zA-Z0-9.-]/', '', $_SERVER['HTTP_HOST'] ?? 'gepmex.com.mx');
 $host = preg_replace('/^www\./', '', $host);
-$sender = "no-reply@{$host}";
+$sender = 'contacto@gepmex.com.mx';
 
 $headers = "From: GEP Web <{$sender}>\r\n";
 $headers .= "Reply-To: {$name} <{$email}>\r\n";
