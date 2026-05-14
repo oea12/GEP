@@ -1,4 +1,6 @@
 server.log
 server.err.log
+contact-log.txt
+gep-contact-log.txt
 _pgbackup/
 _pginfo/

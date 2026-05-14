@@ -48,7 +48,13 @@ $logLine = sprintf(
   $email,
   $_SERVER['REMOTE_ADDR'] ?? 'unknown'
 );
-file_put_contents(__DIR__ . '/contact-log.txt', $logLine, FILE_APPEND | LOCK_EX);
+$logPath = dirname(__DIR__) . '/gep-contact-log.txt';
+
+if (!is_writable(dirname($logPath))) {
+  $logPath = __DIR__ . '/contact-log.txt';
+}
+
+file_put_contents($logPath, $logLine, FILE_APPEND | LOCK_EX);
 
 if (!$sent) {
   error_log('GEP contact form: mail() failed for ' . $recipient);
