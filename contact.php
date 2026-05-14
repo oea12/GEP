@@ -1,6 +1,6 @@
 <?php
 // Cuenta que recibira las solicitudes enviadas desde el sitio.
-$recipient = 'oespinosa@oeamexico.art';
+$recipient = 'oespinosa360.oe@gmail.com';
 $subject = 'Nueva solicitud desde el sitio web de GEP';
 
 function clean_field($value) {
