@@ -2,8 +2,6 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/ukrgn5cqpks1/public_html/
-    - /bin/rm -rf $DEPLOYPATH/css $DEPLOYPATH/fonts $DEPLOYPATH/img $DEPLOYPATH/js
-    - /bin/rm -f $DEPLOYPATH/index.html $DEPLOYPATH/404.html $DEPLOYPATH/contact.php $DEPLOYPATH/.htaccess
     - /bin/cp -R css $DEPLOYPATH
     - /bin/cp -R fonts $DEPLOYPATH
     - /bin/cp -R img $DEPLOYPATH
@@ -11,4 +9,3 @@ deployment:
     - /bin/cp index.html $DEPLOYPATH
     - /bin/cp 404.html $DEPLOYPATH
     - /bin/cp contact.php $DEPLOYPATH
-    - /bin/test -f .htaccess && /bin/cp .htaccess $DEPLOYPATH || true
