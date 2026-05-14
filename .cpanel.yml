@@ -11,4 +11,4 @@ deployment:
     - /bin/cp index.html $DEPLOYPATH
     - /bin/cp 404.html $DEPLOYPATH
     - /bin/cp contact.php $DEPLOYPATH
-    - /bin/cp .htaccess $DEPLOYPATH
+    - /bin/test -f .htaccess && /bin/cp .htaccess $DEPLOYPATH || true
